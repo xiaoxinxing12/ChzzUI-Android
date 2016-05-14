@@ -12,4 +12,5 @@
     <color name="un_press_color">#3da1ff</color>
     <color name="white">#ffffff</color>
     <color name="gray">#e9e7e7</color>
+    <color name="transparent">#00000000</color>
 </resources>
