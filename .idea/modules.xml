@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ChzzUI-Android.iml" filepath="$PROJECT_DIR$/ChzzUI-Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chzzui/chzzui.iml" filepath="$PROJECT_DIR$/chzzui/chzzui.iml" />
+    </modules>
+  </component>
+</project>
