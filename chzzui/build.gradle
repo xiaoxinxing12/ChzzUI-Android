@@ -27,8 +27,8 @@ dependencies {
 task javadoc(type: Javadoc) {
     options.encoding = "utf-8"
 }
-def siteUrl = 'https://github.com/xiaoxinxing12/ChzzVidewView-Android'      // 项目的主页
-def gitUrl = 'https://github.com/xiaoxinxing12/ChzzVidewView-Android.git'   // Git仓库的url
+def siteUrl = 'https://github.com/xiaoxinxing12/ChzzUI-Android'      // 项目的主页
+def gitUrl = 'https://github.com/xiaoxinxing12/ChzzUI-Android.git'   // Git仓库的url
 group = "org.chzz" // Maven Group ID for the artifact，一般填你唯一的包名
 artifacts
 install {
@@ -84,7 +84,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "chzz"  //发布到Bintray的那个仓库里，默认账户有四个库，我们这里上传到maven库
-        name = "chzz-videoview"  //发布到Bintray上的项目名字
+        name = "chzz-UI"  //发布到Bintray上的项目名字
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
