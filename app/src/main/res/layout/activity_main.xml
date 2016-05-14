@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="org.chzz.demo.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="具体使用方法见Sample"/>
-</RelativeLayout>
+
+    <org.chzz.widget.CHZZDownMenu
+        android:id="@+id/CHZZ_DownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:chzz_dividerColor="@color/gray"
+        app:chzz_maskColor="@color/mask_color"
+        app:chzz_menuBackgroundColor="@color/white"
+        app:chzz_menuSelectedIcon="@mipmap/drop_down_selected_icon"
+        app:chzz_menuTextSize="13sp"
+        app:chzz_menuUnselectedIcon="@mipmap/drop_down_unselected_icon"
+        app:chzz_textSelectedColor="@color/drop_down_selected"
+        app:chzz_textUnselectedColor="@color/drop_down_unselected"
+        app:chzz_underlineColor="@color/gray"
+        />
+
+</LinearLayout>

@@ -6,38 +6,38 @@
             <enum name="y" value="1"/>
             <enum name="z" value="2"/>
         </attr>
-        <attr name="fromDeg" format="float" />
-        <attr name="toDeg" format="float" />
+        <attr name="fromDeg" format="float"/>
+        <attr name="toDeg" format="float"/>
         <attr name="pivotX" format="fraction"/>
-        <attr name="pivotY" format="fraction" />
+        <attr name="pivotY" format="fraction"/>
     </declare-styleable>
 
     <declare-styleable name="ProgressWheel">
-        <attr name="matProg_progressIndeterminate" format="boolean" />
-        <attr name="matProg_barColor" format="color" />
-        <attr name="matProg_rimColor" format="color" />
-        <attr name="matProg_rimWidth" format="dimension" />
-        <attr name="matProg_spinSpeed" format="float" />
-        <attr name="matProg_barSpinCycleTime" format="integer" />
-        <attr name="matProg_circleRadius" format="dimension" />
-        <attr name="matProg_fillRadius" format="boolean" />
-        <attr name="matProg_barWidth" format="dimension" />
-        <attr name="matProg_linearProgress" format="boolean" />
+        <attr name="matProg_progressIndeterminate" format="boolean"/>
+        <attr name="matProg_barColor" format="color"/>
+        <attr name="matProg_rimColor" format="color"/>
+        <attr name="matProg_rimWidth" format="dimension"/>
+        <attr name="matProg_spinSpeed" format="float"/>
+        <attr name="matProg_barSpinCycleTime" format="integer"/>
+        <attr name="matProg_circleRadius" format="dimension"/>
+        <attr name="matProg_fillRadius" format="boolean"/>
+        <attr name="matProg_barWidth" format="dimension"/>
+        <attr name="matProg_linearProgress" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="ChzzImageView">
         <!-- 默认图片资源，默认为null -->
-        <attr name="android:src" />
+        <attr name="android:src"/>
         <!-- 是否是圆形，默认值为false -->
-        <attr name="bga_iv_isCircle" format="boolean" />
+        <attr name="bga_iv_isCircle" format="boolean"/>
         <!-- 圆角矩形的半径，默认值为0dp -->
-        <attr name="bga_iv_cornerRadius" format="reference|dimension" />
+        <attr name="bga_iv_cornerRadius" format="reference|dimension"/>
         <!-- 是否是矩形，默认值为false -->
-        <attr name="bga_iv_isSquare" format="boolean" />
+        <attr name="bga_iv_isSquare" format="boolean"/>
         <!-- 描边的宽度，默认值为0dp -->
-        <attr name="bga_iv_borderWidth" format="reference|dimension" />
+        <attr name="bga_iv_borderWidth" format="reference|dimension"/>
         <!-- 描边的颜色，默认值为Color.WHITE -->
-        <attr name="bga_iv_borderColor" format="reference|color" />
+        <attr name="bga_iv_borderColor" format="reference|color"/>
     </declare-styleable>
 
     <!-- indicator -->
@@ -257,5 +257,26 @@
         <attr name="mv_isRadiusHalfHeight" format="boolean"/>
         <!-- 圆角矩形宽高相等,取较宽高中大值-->
         <attr name="mv_isWidthHeightEqual" format="boolean"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="CHZZDownMenu">
+        <!--下划线颜色-->
+        <attr name="chzz_underlineColor" format="color"/>
+        <!--分割线颜色-->
+        <attr name="chzz_dividerColor" format="color"/>
+        <!--tab选中颜色-->
+        <attr name="chzz_textSelectedColor" format="color"/>
+        <!--tab未选中颜色-->
+        <attr name="chzz_textUnselectedColor" format="color"/>
+        <!--tab 背景颜色-->
+        <attr name="chzz_menuBackgroundColor" format="color"/>
+        <!--遮罩颜色，一般是半透明-->
+        <attr name="chzz_maskColor" format="color"/>
+        <attr name="chzz_menuTextSize" format="dimension"/>
+        <!--tab选中状态图标-->
+        <attr name="chzz_menuSelectedIcon" format="reference"/>
+        <!--tab未选中状态图标-->
+        <attr name="chzz_menuUnselectedIcon" format="reference"/>
     </declare-styleable>
 </resources>
