@@ -1,5 +1,6 @@
 package org.chzz.demo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
     private Toolbar mToolbar;
     private LinearLayout mLinearLayout;
     private CHZZScrollView mScrollView;
+    private Button mColor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mLinearLayout = (LinearLayout) findViewById(R.id.toolbar_top);
         mScrollView = (CHZZScrollView) findViewById(R.id.sv_test);
+        mColor = (Button) findViewById(R.id.but_color);
         initView();
     }
 
@@ -118,7 +123,14 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
                 mCHZZDownMenu.closeMenu();
             }
         });
-
+        mColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent color = new Intent(MainActivity.this, ColorActivity.class);
+                color.putExtra("colors", mColor.getCurrentTextColor());
+                startActivityForResult(color, 100);
+            }
+        });
 
         TextView contentView = new TextView(this);
         contentView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -153,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
         }
 
         float space = Math.abs(adViewTopSpace) * 1f;
-        fraction = height ;
+        fraction = height;
         if (fraction < 0f) fraction = 0f;
         if (fraction > 1f) fraction = 1f;
         mToolbar.setAlpha(1f);
@@ -195,5 +207,18 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
             handleTitleBarColorEvaluate(mScrollView.getScrollY());
         }
         return false;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == 100 && null != data) {
+            int color = data.getIntExtra("color", -1);
+            mColor.setTextColor(color);
+
+
+        }
+
     }
 }

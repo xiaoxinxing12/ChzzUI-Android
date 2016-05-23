@@ -8,6 +8,7 @@
     android:background="@color/transparent"
     android:orientation="vertical"
     tools:context="org.chzz.demo.MainActivity">
+
     <include layout="@layout/common_toolbar"/>
 
     <org.chzz.widget.CHZZScrollView
@@ -15,33 +16,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </org.chzz.widget.CHZZScrollView>
-        <LinearLayout
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <org.chzz.widget.CHZZDownMenu
+            android:id="@+id/CHZZ_DownMenu"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            app:chzz_dividerColor="@color/gray"
+            app:chzz_maskColor="@color/mask_color"
+            app:chzz_menuBackgroundColor="@color/white"
+            app:chzz_menuSelectedIcon="@mipmap/drop_down_selected_icon"
+            app:chzz_menuTextSize="13sp"
+            app:chzz_menuUnselectedIcon="@mipmap/drop_down_unselected_icon"
+            app:chzz_textSelectedColor="@color/drop_down_selected"
+            app:chzz_textUnselectedColor="@color/drop_down_unselected"
+            app:chzz_underlineColor="@color/gray"
+            />
 
-            <org.chzz.widget.CHZZDownMenu
-                android:id="@+id/CHZZ_DownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:chzz_dividerColor="@color/gray"
-                app:chzz_maskColor="@color/mask_color"
-                app:chzz_menuBackgroundColor="@color/white"
-                app:chzz_menuSelectedIcon="@mipmap/drop_down_selected_icon"
-                app:chzz_menuTextSize="13sp"
-                app:chzz_menuUnselectedIcon="@mipmap/drop_down_unselected_icon"
-                app:chzz_textSelectedColor="@color/drop_down_selected"
-                app:chzz_textUnselectedColor="@color/drop_down_unselected"
-                app:chzz_underlineColor="@color/gray"
-                />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="具体使用方法见Sample"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="具体使用方法见Sample"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1000dp"/>
-        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/but_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置颜色"/>
+    </LinearLayout>
+
 
 </LinearLayout>
