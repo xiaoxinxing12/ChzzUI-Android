@@ -16,8 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.chzz.utils.ColorUtil;
-import org.chzz.utils.DensityUtil;
+import org.chzz.library.ColorUtil;
+import org.chzz.library.DensityUtil;
 import org.chzz.widget.CHZZDownMenu;
 import org.chzz.widget.CHZZScrollView;
 
