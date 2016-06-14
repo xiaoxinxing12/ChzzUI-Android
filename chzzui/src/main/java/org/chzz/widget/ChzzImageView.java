@@ -30,6 +30,7 @@ public class ChzzImageView extends ImageView {
     private int mBorderWidth = 0;
     private int mBorderColor = Color.WHITE;
 
+
     private Paint mBorderPaint;
 
     public ChzzImageView(Context context) {

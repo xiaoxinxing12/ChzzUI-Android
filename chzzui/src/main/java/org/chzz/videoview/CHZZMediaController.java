@@ -44,6 +44,7 @@ public class CHZZMediaController extends FrameLayout {
 
     private CHZZMediaController.MediaPlayerControl mPlayer;
 
+
     private Context mContext;
 
     private ProgressBar mProgress;

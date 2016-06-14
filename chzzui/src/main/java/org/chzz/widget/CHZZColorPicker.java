@@ -114,14 +114,11 @@ public class CHZZColorPicker extends View {
         colorWheelPaint = new Paint();
         colorWheelPaint.setAntiAlias(true);
         colorWheelPaint.setDither(true);
-
         valueSliderPaint = new Paint();
         valueSliderPaint.setAntiAlias(true);
         valueSliderPaint.setDither(true);
-
         colorViewPaint = new Paint();
         colorViewPaint.setAntiAlias(true);
-
         colorViewPath = new Path();
         valueSliderPath = new Path();
         arrowPointerPath = new Path();
