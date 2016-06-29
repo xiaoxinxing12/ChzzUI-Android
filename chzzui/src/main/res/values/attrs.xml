@@ -400,4 +400,7 @@
         <!-- 扫描线的网格图片资源，默认值为null -->
         <attr name="qrcv_customGridScanLineDrawable" format="reference" />
     </declare-styleable>
+    <declare-styleable name="KPSwitchPanelLayout">
+        <attr name="ignore_recommend_height" format="boolean" />
+    </declare-styleable>
 </resources>
