@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.chzz.dialog.CHZZAlertDialog;
+import org.chzz.dialog.SweetAlertDialog;
 import org.chzz.library.ColorUtil;
 import org.chzz.library.DensityUtil;
 import org.chzz.widget.CHZZDownMenu;
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
     private LinearLayout mLinearLayout;
     private CHZZScrollView mScrollView;
     private Button mColor;
-
+    private CHZZAlertDialog mLoadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
         mScrollView = (CHZZScrollView) findViewById(R.id.sv_test);
         mColor = (Button) findViewById(R.id.but_color);
         initView();
+        showLoadingDialog();
     }
 
 
@@ -220,5 +223,19 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
 
         }
 
+    }
+    /**
+     * 加载数据时show
+     */
+    public void showLoadingDialog() {
+        if (mLoadingDialog == null) {
+            mLoadingDialog = new CHZZAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+
+            mLoadingDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.colorPrimary));
+            //mLoadingDialog.setCustomImage(R.drawable.ic_launcher);
+            mLoadingDialog.setCancelable(false);
+            mLoadingDialog.setTitleText("数据加载中...");
+        }
+        mLoadingDialog.show();
     }
 }

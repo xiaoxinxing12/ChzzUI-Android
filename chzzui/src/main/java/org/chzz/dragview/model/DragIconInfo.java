@@ -1,5 +1,6 @@
 package org.chzz.dragview.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  * 作者: wedcel wedcel@gmail.com<p>
  * 时间: 2015年8月25日 下午5:08:23 <p>
  */
-public class DragIconInfo {
+public class DragIconInfo implements Serializable {
 
     /**
      * 可展开的
