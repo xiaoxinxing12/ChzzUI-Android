@@ -1,6 +1,8 @@
 package org.chzz.dragview.model;
 
 
+import java.io.Serializable;
+
 /**
  *
  * 类: DragChildInfo <p>
@@ -8,7 +10,7 @@ package org.chzz.dragview.model;
  * 作者: wedcel wedcel@gmail.com<p>
  * 时间: 2015年8月25日 下午5:24:04 <p>
  */
-public class DragChildInfo {
+public class DragChildInfo  implements Serializable {
 
 	private int id;
 	private String name;
