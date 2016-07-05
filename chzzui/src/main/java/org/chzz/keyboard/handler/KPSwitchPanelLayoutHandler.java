@@ -20,9 +20,10 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 
-import cn.dreamtobe.kpswitch.IPanelConflictLayout;
-import cn.dreamtobe.kpswitch.R;
-import cn.dreamtobe.kpswitch.util.ViewUtil;
+import org.chzz.R;
+import org.chzz.keyboard.IPanelConflictLayout;
+import org.chzz.keyboard.util.ViewUtil;
+
 
 /**
  * Created by Jacksgong on 3/30/16.
@@ -30,16 +31,13 @@ import cn.dreamtobe.kpswitch.util.ViewUtil;
  * Keyboard->Panel: if the keyboard is showing, and {@code visibility} equal {@link View#VISIBLE}
  * then must by Keyboard->Panel, then show the panel after the keyboard is real gone, and will be
  * show by {@link IPanelConflictLayout#handleShow()}.
- * Easy and Safe way: {@link cn.dreamtobe.kpswitch.util.KPSwitchConflictUtil#showPanel(View)}.
+
  * <p/>
  * Panel->Keyboard: do not need to invoke {@link View#setVisibility(int)} to let the panel gone,
  * just show keyboard, the panel will be gone automatically when keyboard is real visible, and will
  * be hide by {@link #handleHide()} -> {@link #processOnMeasure(int, int)}.
- * Easy and safe way: {@link cn.dreamtobe.kpswitch.util.KPSwitchConflictUtil#showKeyboard(View, View)}.
  *
- * @see cn.dreamtobe.kpswitch.widget.KPSwitchPanelFrameLayout
- * @see cn.dreamtobe.kpswitch.widget.KPSwitchPanelLinearLayout
- * @see cn.dreamtobe.kpswitch.widget.KPSwitchPanelRelativeLayout
+
  */
 public class KPSwitchPanelLayoutHandler implements IPanelConflictLayout {
     private final View panelLayout;

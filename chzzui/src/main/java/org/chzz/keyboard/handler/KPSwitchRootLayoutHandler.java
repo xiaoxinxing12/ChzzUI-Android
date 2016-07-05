@@ -23,17 +23,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
-import cn.dreamtobe.kpswitch.IPanelConflictLayout;
-import cn.dreamtobe.kpswitch.util.StatusBarHeightUtil;
-import cn.dreamtobe.kpswitch.util.ViewUtil;
+import org.chzz.keyboard.IPanelConflictLayout;
+import org.chzz.keyboard.util.StatusBarHeightUtil;
+import org.chzz.keyboard.util.ViewUtil;
 
-/**
- * Created by Jacksgong on 3/30/16.
- *
- * @see cn.dreamtobe.kpswitch.widget.KPSwitchRootFrameLayout
- * @see cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout
- * @see cn.dreamtobe.kpswitch.widget.KPSwitchRootRelativeLayout
- */
+
+
 public class KPSwitchRootLayoutHandler {
     private final static String TAG = "KPSRootLayoutHandler";
 

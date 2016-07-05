@@ -43,12 +43,32 @@
             android:text="具体使用方法见Sample"/>
 
 
-
         <Button
             android:id="@+id/but_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="设置颜色"/>
+
+        <Button
+            android:id="@+id/but_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="启动住院医"/>
+
+        <org.chzz.badge.CHZZBadgeRadioButton
+            android:id="@+id/brb_main_home"
+            style="@style/WrapWrap"
+            android:checked="true"
+            android:gravity="center"
+            android:text="首页"
+            android:paddingBottom="5dp"
+            android:button="@null"
+            android:drawableTop="@drawable/selector_tab_home"
+            android:background="#00000000"
+            app:badge_dragable="true"
+            app:badge_isResumeTravel="true"
+            app:badge_padding="2dp" />
+
     </LinearLayout>
 
 

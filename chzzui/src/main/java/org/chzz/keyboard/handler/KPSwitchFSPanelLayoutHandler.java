@@ -18,8 +18,9 @@ package org.chzz.keyboard.handler;
 import android.view.View;
 import android.view.Window;
 
-import cn.dreamtobe.kpswitch.IFSPanelConflictLayout;
-import cn.dreamtobe.kpswitch.util.KeyboardUtil;
+import org.chzz.keyboard.IFSPanelConflictLayout;
+import org.chzz.keyboard.util.KeyboardUtil;
+
 
 /**
  * Created by Jacksgong on 3/31/16.
