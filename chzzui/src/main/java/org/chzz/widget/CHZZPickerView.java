@@ -178,7 +178,7 @@ public class CHZZPickerView extends View {
         mViewHeight = getMeasuredHeight();
         mViewWidth = getMeasuredWidth();
         // 按照View的高度计算字体大小
-        mMaxTextSize = mViewHeight / 4.0f;
+        mMaxTextSize = mViewHeight / 3.5f;
         mMinTextSize = mMaxTextSize / 2f;
         isInit = true;
         //		清屏刷新
@@ -347,7 +347,7 @@ public class CHZZPickerView extends View {
                 break;
             case MotionEvent.ACTION_UP:
                 // Log.i("exitTime", System.currentTimeMillis() - exitTime + ">" + System.currentTimeMillis() + ">" + exitTime);
-                if ((System.currentTimeMillis() - exitTime) > 80) {
+                if ((System.currentTimeMillis() - exitTime) > 100) {
                     doUp(event);
                 } else {
                     if (mClickListener != null && mDataList.size() != 0)

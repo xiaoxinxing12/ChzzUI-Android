@@ -259,8 +259,8 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
     }
 
     private void getData() {
-        for (int i = 0; i < 9; i++) {
-            mNumData.add(i < 9 ? "0." + i : "" + i);
+        for (int i = 0; i < 10; i++) {
+            mNumData.add("" + i);
         }
     }
 
