@@ -15,11 +15,15 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.chzz.badge.CHZZBadgeRadioButton;
+import org.chzz.dialog.GradeAlertDialog;
+import org.chzz.dialog.SweetAlertDialog;
 import org.chzz.library.ColorUtil;
 import org.chzz.library.DensityUtil;
 import org.chzz.widget.CHZZDownMenu;
+import org.chzz.widget.CHZZPickerView;
 import org.chzz.widget.CHZZScrollView;
 
 import java.util.ArrayList;
@@ -46,7 +50,9 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
     private CHZZScrollView mScrollView;
     private Button mColor;
     private CHZZBadgeRadioButton mBadgeRadioButton;
-
+    private CHZZPickerView mNumberPicker;
+    private List<String> mNumData = new ArrayList<String>();
+    private Button mGrade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +63,19 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
         mLinearLayout = (LinearLayout) findViewById(R.id.toolbar_top);
         mScrollView = (CHZZScrollView) findViewById(R.id.sv_test);
         mColor = (Button) findViewById(R.id.but_color);
-        mBadgeRadioButton= (CHZZBadgeRadioButton) findViewById(R.id.brb_main_home);
+        mBadgeRadioButton = (CHZZBadgeRadioButton) findViewById(R.id.brb_main_home);
         mBadgeRadioButton.showTextBadge("10");
+        mNumberPicker = (CHZZPickerView) findViewById(R.id.numberpicker);
+        mGrade = (Button) findViewById(R.id.but_grade);
+
+        getData();
+        mNumberPicker.setData(mNumData);
+        mNumberPicker.setOnSelectListener(new CHZZPickerView.onSelectListener() {
+            @Override
+            public void onSelect(String text) {
+                Toast.makeText(MainActivity.this, "your select " + text, Toast.LENGTH_SHORT).show();
+            }
+        });
         initView();
     }
 
@@ -144,7 +161,22 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
         contentView.setVisibility(View.GONE);
 
         mCHZZDownMenu.setCHZZDownMenu(Arrays.asList(headers), popupViews, contentView);
-
+        mGrade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GradeAlertDialog g = new GradeAlertDialog(MainActivity.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE);
+                g.setCanceledOnTouchOutside(true);
+                g.setNumData(mNumData);
+                g.setGradeClickListener(new GradeAlertDialog.OnGradeClickListener() {
+                    @Override
+                    public void onClick(String text, GradeAlertDialog dialog) {
+                        mGrade.setText(text);
+                        dialog.cancel();
+                    }
+                });
+                g.show();
+            }
+        });
     }
 
     @Override
@@ -224,6 +256,12 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
 
         }
 
+    }
+
+    private void getData() {
+        for (int i = 0; i < 9; i++) {
+            mNumData.add(i < 9 ? "0." + i : "" + i);
+        }
     }
 
 }

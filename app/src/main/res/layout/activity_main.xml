@@ -58,17 +58,35 @@
         <org.chzz.badge.CHZZBadgeRadioButton
             android:id="@+id/brb_main_home"
             style="@style/WrapWrap"
-            android:checked="true"
-            android:gravity="center"
-            android:text="首页"
-            android:paddingBottom="5dp"
-            android:button="@null"
-            android:drawableTop="@drawable/selector_tab_home"
             android:background="#00000000"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/selector_tab_home"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:text="首页"
             app:badge_dragable="true"
             app:badge_isResumeTravel="true"
-            app:badge_padding="2dp" />
+            app:badge_padding="2dp"/>
 
+        <Button
+            android:id="@+id/but_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/grade_selector_item">
+
+            <org.chzz.widget.CHZZPickerView
+                android:id="@+id/numberpicker"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerInParent="true"
+                />
+        </RelativeLayout>
     </LinearLayout>
 
 
