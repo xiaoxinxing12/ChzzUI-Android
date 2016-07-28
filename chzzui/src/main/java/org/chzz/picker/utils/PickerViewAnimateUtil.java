@@ -4,7 +4,6 @@ import android.view.Gravity;
 
 import org.chzz.R;
 
-
 /**
  * Created by Sai on 15/8/9.
  */

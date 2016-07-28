@@ -14,6 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
+ * 时间选择器
  * Created by Sai on 15/11/22.
  */
 public class TimePickerView extends BasePickerView implements View.OnClickListener {
@@ -58,39 +59,19 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
     }
 
     /**
-     * 设置可以选择的年范围
-     *
-     * @param startYear
-     * @param endYear
+     * 设置可以选择的时间范围
+     * 要在setTime之前调用才有效果
+     * @param startYear 开始年份
+     * @param endYear 结束年份
      */
     public void setRange(int startYear, int endYear) {
         wheelTime.setStartYear(startYear);
         wheelTime.setEndYear(endYear);
     }
-    /**
-     * 设置可以选择的月范围
-     *
-     * @param startMonth
-     * @param endMonth
-     */
-    public void setRangeMonth(int startMonth, int endMonth) {
-        wheelTime.setStartMonth(startMonth);
-        wheelTime.setEndMonth(endMonth);
-    }
 
     /**
-     * 设置可以选择的日范围
-     *
-     * @param startDay
-     * @param endDay
-     */
-    public void setRangeDay(int startDay, int endDay) {
-        wheelTime.setStartDay(startDay);
-        wheelTime.setEndDay(endDay);
-    }
-    /**
      * 设置选中时间
-     * @param date
+     * @param date 时间
      */
     public void setTime(Date date) {
         Calendar calendar = Calendar.getInstance();
@@ -128,8 +109,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
 
     /**
      * 设置是否循环滚动
-     *
-     * @param cyclic
+     * @param cyclic 是否循环
      */
     public void setCyclic(boolean cyclic) {
         wheelTime.setCyclic(cyclic);
@@ -156,7 +136,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
     }
 
     public interface OnTimeSelectListener {
-        public void onTimeSelect(Date date);
+        void onTimeSelect(Date date);
     }
 
     public void setOnTimeSelectListener(OnTimeSelectListener timeSelectListener) {

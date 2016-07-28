@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 
 import org.chzz.R;
-import org.chzz.picker.TimePickerView;
+import org.chzz.picker.TimePickerView.Type;
 import org.chzz.picker.adapter.NumericWheelAdapter;
 import org.chzz.picker.lib.WheelView;
 import org.chzz.picker.listener.OnItemSelectedListener;
@@ -24,23 +24,21 @@ public class WheelTime {
 	private WheelView wv_hours;
 	private WheelView wv_mins;
 
-	private TimePickerView.Type type;
+	private Type type;
 	public static final int DEFULT_START_YEAR = 1990;
 	public static final int DEFULT_END_YEAR = 2100;
 	private int startYear = DEFULT_START_YEAR;
 	private int endYear = DEFULT_END_YEAR;
-	private int startMonth = 1;
-	private int endMonth = 12;
-	private int startDay = 1;
-	private int endDay = 30;
+
+
 
 	public WheelTime(View view) {
 		super();
 		this.view = view;
-		type = TimePickerView.Type.ALL;
+		type = Type.ALL;
 		setView(view);
 	}
-	public WheelTime(View view,TimePickerView.Type type) {
+	public WheelTime(View view,Type type) {
 		super();
 		this.view = view;
 		this.type = type;
@@ -50,9 +48,6 @@ public class WheelTime {
 		this.setPicker(year, month, day, 0, 0);
 	}
 	
-	/**
-	 * @Description: TODO 弹出日期时间选择器
-	 */
 	public void setPicker(int year ,int month ,int day,int h,int m) {
 		// 添加大小月月份并将其转换为list,方便之后的判断
 		String[] months_big = { "1", "3", "5", "7", "8", "10", "12" };
@@ -70,8 +65,7 @@ public class WheelTime {
 
 		// 月
 		wv_month = (WheelView) view.findViewById(R.id.month);
-		//wv_month.setAdapter(new NumericWheelAdapter(1, 12));
-		wv_month.setAdapter(new NumericWheelAdapter(startMonth, endMonth));// 设置"年"的显示数据
+		wv_month.setAdapter(new NumericWheelAdapter(1, 12));
 		wv_month.setLabel(context.getString(R.string.pickerview_month));
 		wv_month.setCurrentItem(month);
 
@@ -88,9 +82,6 @@ public class WheelTime {
 				wv_day.setAdapter(new NumericWheelAdapter(1, 29));
 			else
 				wv_day.setAdapter(new NumericWheelAdapter(1, 28));
-		}
-		if(startDay>0){
-			//wv_day.setAdapter(new NumericWheelAdapter(startDay, endDay));
 		}
 		wv_day.setLabel(context.getString(R.string.pickerview_day));
 		wv_day.setCurrentItem(day - 1);
@@ -141,7 +132,7 @@ public class WheelTime {
 		OnItemSelectedListener wheelListener_month = new OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(int index) {
-				int month_num = startMonth + index;
+				int month_num = index + 1;
 				int maxItem = 30;
 				// 判断大小月及是否闰年,用来确定"日"的数据
 				if (list_big.contains(String.valueOf(month_num))) {
@@ -220,7 +211,7 @@ public class WheelTime {
 	public String getTime() {
 		StringBuffer sb = new StringBuffer();
 			sb.append((wv_year.getCurrentItem() + startYear)).append("-")
-			.append((wv_month.getCurrentItem() + startMonth)).append("-")
+			.append((wv_month.getCurrentItem() + 1)).append("-")
 			.append((wv_day.getCurrentItem() + 1)).append(" ")
 			.append(wv_hours.getCurrentItem()).append(":")
 			.append(wv_mins.getCurrentItem());
@@ -241,38 +232,6 @@ public class WheelTime {
 
 	public void setStartYear(int startYear) {
 		this.startYear = startYear;
-	}
-
-	public int getEndMonth() {
-		return endMonth;
-	}
-
-	public void setEndMonth(int endMonth) {
-		this.endMonth = endMonth;
-	}
-
-	public int getStartMonth() {
-		return startMonth;
-	}
-
-	public void setStartMonth(int startMonth) {
-		this.startMonth = startMonth;
-	}
-
-	public int getStartDay() {
-		return startDay;
-	}
-
-	public void setStartDay(int startDay) {
-		this.startDay = startDay;
-	}
-
-	public int getEndDay() {
-		return endDay;
-	}
-
-	public void setEndDay(int endDay) {
-		this.endDay = endDay;
 	}
 
 	public int getEndYear() {

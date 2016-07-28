@@ -22,12 +22,15 @@ import org.chzz.dialog.GradeAlertDialog;
 import org.chzz.dialog.SweetAlertDialog;
 import org.chzz.library.ColorUtil;
 import org.chzz.library.DensityUtil;
+import org.chzz.picker.TimePickerView;
 import org.chzz.widget.CHZZDownMenu;
 import org.chzz.widget.CHZZPickerView;
 import org.chzz.widget.CHZZScrollView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements CHZZScrollView.ScrollListener, View.OnTouchListener {
@@ -53,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
     private CHZZPickerView mNumberPicker;
     private List<String> mNumData = new ArrayList<String>();
     private Button mGrade;
+    private TextView mTime;
+    private TimePickerView pvTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
         mBadgeRadioButton.showTextBadge("10");
         mNumberPicker = (CHZZPickerView) findViewById(R.id.numberpicker);
         mGrade = (Button) findViewById(R.id.but_grade);
+        mTime= (TextView) findViewById(R.id.tvTime);
 
         getData();
         mNumberPicker.setData(mNumData);
@@ -177,8 +183,37 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
                 g.show();
             }
         });
-    }
 
+        mTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pvTime.show();
+            }
+        });
+
+        pvTime = new TimePickerView(this, TimePickerView.Type.YEAR_MONTH_DAY);
+        //控制时间范围
+//        Calendar calendar = Calendar.getInstance();
+//        pvTime.setRange(calendar.get(Calendar.YEAR) - 20, calendar.get(Calendar.YEAR));//要在setTime 之前才有效果哦
+        pvTime.setTime(new Date());
+        pvTime.setTitle("选择时间");
+        pvTime.setCyclic(false);
+        pvTime.setCancelable(true);
+        //时间选择后回调
+        pvTime.setOnTimeSelectListener(new TimePickerView.OnTimeSelectListener() {
+
+            @Override
+            public void onTimeSelect(Date date) {
+                mTime.setText(getTime(date));
+            }
+        });
+
+
+    }
+    public static String getTime(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return format.format(date);
+    }
     @Override
     public void onBackPressed() {
         //退出activity前关闭菜单

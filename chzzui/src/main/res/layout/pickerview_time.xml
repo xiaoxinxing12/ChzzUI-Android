@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_margin="5dp"
+              android:background="@drawable/picker_round_selector"
+              android:orientation="vertical">
 
-    <include
-        layout="@layout/include_pickerview_topbar"
+    <TextView
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/pickerview_topbar_height"/>
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="15dp"
+        android:textSize="16dp"
+        android:text="设置日期"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#c2c2c2"/>
 
     <LinearLayout
         android:id="@+id/timepicker"
+        android:showDividers="middle"
+        android:divider="@drawable/picker_horizontal_line"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
@@ -20,32 +33,41 @@
             android:id="@+id/year"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
         <org.chzz.picker.lib.WheelView
             android:id="@+id/month"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1.1" />
+            android:layout_weight="1.1"/>
 
         <org.chzz.picker.lib.WheelView
             android:id="@+id/day"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1.1" />
+            android:layout_weight="1.1"/>
 
         <org.chzz.picker.lib.WheelView
             android:id="@+id/hour"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1.1" />
+            android:layout_weight="1.1"/>
 
         <org.chzz.picker.lib.WheelView
             android:id="@+id/min"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1.1" />
+            android:layout_weight="1.1"/>
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#c2c2c2"/>
+
+    <include
+        layout="@layout/include_pickerview_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pickerview_topbar_height"/>
 
 </LinearLayout>
