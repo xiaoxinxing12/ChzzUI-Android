@@ -20,6 +20,8 @@ import android.widget.Toast;
 import org.chzz.badge.CHZZBadgeRadioButton;
 import org.chzz.dialog.GradeAlertDialog;
 import org.chzz.dialog.SweetAlertDialog;
+import org.chzz.downmenu.DropDownMenu;
+import org.chzz.downmenu.interfaces.OnFilterDoneListener;
 import org.chzz.library.ColorUtil;
 import org.chzz.library.DensityUtil;
 import org.chzz.picker.TimePickerView;
@@ -33,7 +35,10 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements CHZZScrollView.ScrollListener, View.OnTouchListener {
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+public class MainActivity extends AppCompatActivity implements CHZZScrollView.ScrollListener, View.OnTouchListener, OnFilterDoneListener {
 
     CHZZDownMenu mCHZZDownMenu;
     private GirdDropDownAdapter batchAdapter, departmentsAdapter, stepAdapter, professionalAdapter;
@@ -58,7 +63,8 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
     private Button mGrade;
     private TextView mTime;
     private TimePickerView pvTime;
-
+    @Bind(R.id.dropDownMenu)
+    DropDownMenu dropDownMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,9 +89,14 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
             }
         });
         initView();
+        ButterKnife.bind(this);
+        initFilterDropDownView();
     }
 
-
+    private void initFilterDropDownView() {
+        String[] titleList = new String[]{"第一个"};
+        dropDownMenu.setMenuAdapter(new DropMenuAdapter(this, titleList, this));
+    }
     private void initView() {
         //init city menu
         mScrollView.setScrollListener(this);
@@ -299,4 +310,12 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
         }
     }
 
+    @Override
+    public void onFilterDone(int position, String positionTitle, String urlValue) {
+        if (position != 3) {
+            dropDownMenu.setPositionIndicatorText(FilterUrl.instance().position, FilterUrl.instance().positionTitle);
+        }
+
+        dropDownMenu.close();
+    }
 }
