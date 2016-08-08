@@ -105,7 +105,7 @@ public class DropMenuAdapter implements MenuAdapter {
 
         List<String> list = new ArrayList<>();
         for (int i = 0; i < 10; ++i) {
-            list.add("" + i);
+            list.add("11111111111111111111111111" + i);
         }
         singleListView.setList(list, -1);
 

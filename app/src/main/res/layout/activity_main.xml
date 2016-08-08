@@ -22,12 +22,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <LinearLayout
             android:id="@id/mFilterContentView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+         >
 
+            <org.chzz.widget.NiceSpinner
+                android:background="@drawable/picker_round_selector"
+                android:layout_margin="10dp"
+                android:id="@+id/nice_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                 app:textTint="#000"
+                />
+
+            <org.chzz.widget.NiceSpinner
+                android:id="@+id/nice_spinner1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                app:textTint="#000"
+                />
             <org.chzz.widget.CHZZDownMenu
                 android:id="@+id/CHZZ_DownMenu"
                 android:layout_width="match_parent"
@@ -101,6 +120,6 @@
                 android:layout_margin="50dp"
                 android:text="时间"/>
         </LinearLayout>
-</org.chzz.downmenu.DropDownMenu>
 
+    </org.chzz.downmenu.DropDownMenu>
 </LinearLayout>

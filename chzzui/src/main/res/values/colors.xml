@@ -52,4 +52,7 @@
     <color name="b_c_fafafa">#fafafa</color>
     <color name="blue_4285f4">#3da1ff</color>
     <color name="black_5a626d">#5a626d</color>
+
+    <color name="light_gray">#fff5f5f5</color>
+    <color name="darker_gray">#e5e5e5</color>
 </resources>

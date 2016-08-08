@@ -28,15 +28,14 @@ import org.chzz.picker.TimePickerView;
 import org.chzz.widget.CHZZDownMenu;
 import org.chzz.widget.CHZZPickerView;
 import org.chzz.widget.CHZZScrollView;
+import org.chzz.widget.NiceSpinner;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements CHZZScrollView.ScrollListener, View.OnTouchListener, OnFilterDoneListener {
 
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
 
     private String departments[] = {"心血管内科", "肾内科", "血液内科", "皮肤科", "肾内科", "血液内科", "皮肤科"};
     private String step[] = {"无阶段", "一阶段"};
-    private String professional[] = {"全科", "产科"};
+    private String professional[] = {"全科`11111111111", "产科1111111111111"};
     private String headers[] = {"选择批次", "专业方向", "选择阶段", "选择科室"};
     private List<View> popupViews = new ArrayList<>();
     private int adViewHeight = 180; // 广告视图的高度
@@ -63,13 +62,13 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
     private Button mGrade;
     private TextView mTime;
     private TimePickerView pvTime;
-    @Bind(R.id.dropDownMenu)
     DropDownMenu dropDownMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mCHZZDownMenu = (CHZZDownMenu) findViewById(R.id.CHZZ_DownMenu);
+        dropDownMenu= (DropDownMenu) findViewById(R.id.dropDownMenu);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mLinearLayout = (LinearLayout) findViewById(R.id.toolbar_top);
         mScrollView = (CHZZScrollView) findViewById(R.id.sv_test);
@@ -89,14 +88,41 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
             }
         });
         initView();
-        ButterKnife.bind(this);
-        initFilterDropDownView();
+
+        NiceSpinner niceSpinner = (NiceSpinner) findViewById(R.id.nice_spinner);
+        final List<String> dataset = new LinkedList<>(Arrays.asList("One", "Two", "Three", "Four", "Five"));
+        niceSpinner.attachDataSource(dataset);
+        niceSpinner.setSelectedIndex(3);
+        niceSpinner.setText("9999");
+        niceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this,dataset.get(position),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        NiceSpinner niceSpinner1 = (NiceSpinner) findViewById(R.id.nice_spinner1);
+        final List<String> dataset1 = new LinkedList<>(Arrays.asList("One", "Two", "Three", "Four", "Five"));
+        niceSpinner1.attachDataSource(dataset);
+        niceSpinner1.setSelectedIndex(3);
+        niceSpinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this,dataset.get(position),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
-    private void initFilterDropDownView() {
-        String[] titleList = new String[]{"第一个"};
-        dropDownMenu.setMenuAdapter(new DropMenuAdapter(this, titleList, this));
-    }
+
     private void initView() {
         //init city menu
         mScrollView.setScrollListener(this);
@@ -121,6 +147,8 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
         professionalView.setDividerHeight(0);
         professionalView.setAdapter(professionalAdapter);
 
+        DropMenuAdapter dropMenuAdapter = new DropMenuAdapter(this, professional, this);
+        dropDownMenu.setMenuAdapter(dropMenuAdapter);
 
         popupViews.add(batchView);
         popupViews.add(departmentsView);
@@ -312,10 +340,6 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
 
     @Override
     public void onFilterDone(int position, String positionTitle, String urlValue) {
-        if (position != 3) {
-            dropDownMenu.setPositionIndicatorText(FilterUrl.instance().position, FilterUrl.instance().positionTitle);
-        }
 
-        dropDownMenu.close();
     }
 }

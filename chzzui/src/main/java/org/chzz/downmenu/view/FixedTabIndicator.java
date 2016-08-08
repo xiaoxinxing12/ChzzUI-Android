@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import org.chzz.R;
 import org.chzz.downmenu.adapter.MenuAdapter;
 import org.chzz.downmenu.util.UIUtil;
@@ -45,7 +46,7 @@ public class FixedTabIndicator extends LinearLayout {
     private int mTabDefaultColor = 0xFF666666;// 未选中默认颜色
     private int mTabSelectedColor = 0xFF008DF2;// 指针选中颜色
     private int drawableRight = 10;
-
+    private int setMaxEms = 6;
     private int measureHeight;
     private int measuredWidth;
 
@@ -59,6 +60,13 @@ public class FixedTabIndicator extends LinearLayout {
         this(context, null);
     }
 
+    public FixedTabIndicator(Context context, int textLength) {
+        this(context, null);
+        if (textLength > 0)
+            setMaxEms = textLength;
+        init(context);
+    }
+
     public FixedTabIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
@@ -69,6 +77,9 @@ public class FixedTabIndicator extends LinearLayout {
         init(context);
     }
 
+    public void setSetMaxEms(int setMaxEms) {
+        this.setMaxEms = setMaxEms;
+    }
 
     /**
      * 条目点击事件
@@ -231,8 +242,9 @@ public class FixedTabIndicator extends LinearLayout {
         tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, mTabTextSize);
         tv.setTextColor(mTabDefaultColor);
         tv.setSingleLine();
+        tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         tv.setEllipsize(TextUtils.TruncateAt.END);
-        tv.setMaxEms(6);//限制4个字符
+        //tv.setMaxEms(setMaxEms);//限制4个字符
         Drawable drawable = getResources().getDrawable(R.drawable.level_filter);
         tv.setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
         tv.setCompoundDrawablePadding(drawableRight);

@@ -8,7 +8,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-
 import org.chzz.R;
 import org.chzz.downmenu.adapter.MenuAdapter;
 import org.chzz.downmenu.util.SimpleAnimationListener;
