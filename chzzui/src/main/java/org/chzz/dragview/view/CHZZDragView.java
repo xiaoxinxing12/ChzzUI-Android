@@ -23,8 +23,9 @@ public class CHZZDragView extends ViewGroup {
     private CustomAboveView mCustomAboveView;
     private CustomBehindParent mCustomBehindParent;
     private boolean isEditModel = false;
-    public static  int COLUMNUM = 4;
+    public static int COLUMNUM = 4;
     private Context mContext;
+    private boolean isMore = true;
     //所有以的list
     private ArrayList<DragIconInfo> allInfoList = new ArrayList<DragIconInfo>();
     /**
@@ -84,6 +85,11 @@ public class CHZZDragView extends ViewGroup {
 
     public CHZZDragView(Context context) {
         this(context, null);
+    }
+
+    public CHZZDragView(Context context, boolean isMore) {
+        this(context, null);
+        this.isMore = isMore;
     }
 
     public InfoEditModelListener getEditModelListener() {
@@ -148,7 +154,7 @@ public class CHZZDragView extends ViewGroup {
      * @param l
      * @param t
      * @param r
-     * @param b       <p/>
+     * @param b       <p>
      * @see ViewGroup#onLayout(boolean, int, int, int, int) <p>
      */
     @Override
@@ -179,7 +185,6 @@ public class CHZZDragView extends ViewGroup {
 
         refreshIconInfo();
     }
-
 
 
     /**
@@ -264,7 +269,7 @@ public class CHZZDragView extends ViewGroup {
                 break;
             }
         }
-        if (!hasMoreInfo) {
+        if (!hasMoreInfo && isMore) {
             //没有更多 增加
             homePageInfoList.add(new DragIconInfo(CustomAboveView.MORE, "", R.mipmap.icon_home_more, 0, new ArrayList<DragChildInfo>()));
         } else {
@@ -413,7 +418,7 @@ public class CHZZDragView extends ViewGroup {
      * 时间: 2015年8月25日 下午5:30:58
      */
     protected void dispatchChild(DragChildInfo childInfo) {
-        if (childInfo == null||mDragOnClickListener==null) {
+        if (childInfo == null || mDragOnClickListener == null) {
             return;
         }
         //Toast.makeText(mContext, "点击了item" + childInfo.getName(), Toast.LENGTH_SHORT).show();
@@ -431,7 +436,7 @@ public class CHZZDragView extends ViewGroup {
      * 时间: 2015年8月25日 下午5:30:40
      */
     public void dispatchSingle(DragIconInfo dragInfo) {
-        if (dragInfo == null||mDragOnClickListener==null) {
+        if (dragInfo == null || mDragOnClickListener == null) {
             return;
         }
         mDragOnClickListener.dispatchSingle(dragInfo);

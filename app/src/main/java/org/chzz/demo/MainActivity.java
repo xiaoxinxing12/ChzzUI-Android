@@ -29,15 +29,18 @@ import org.chzz.widget.CHZZDownMenu;
 import org.chzz.widget.CHZZPickerView;
 import org.chzz.widget.CHZZScrollView;
 import org.chzz.widget.NiceSpinner;
+import org.chzz.widget.NiceSpinnerBaseAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements CHZZScrollView.ScrollListener, View.OnTouchListener, OnFilterDoneListener {
+public class MainActivity extends AppCompatActivity implements CHZZScrollView.ScrollListener, View.OnTouchListener, OnFilterDoneListener, NiceSpinnerBaseAdapter.onCheckBoxChecked {
 
     CHZZDownMenu mCHZZDownMenu;
     private GirdDropDownAdapter batchAdapter, departmentsAdapter, stepAdapter, professionalAdapter;
@@ -63,12 +66,15 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
     private TextView mTime;
     private TimePickerView pvTime;
     DropDownMenu dropDownMenu;
+    private Map<String, Integer> mIntegerList = new HashMap<>();
+    NiceSpinner niceSpinner1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mCHZZDownMenu = (CHZZDownMenu) findViewById(R.id.CHZZ_DownMenu);
-        dropDownMenu= (DropDownMenu) findViewById(R.id.dropDownMenu);
+        dropDownMenu = (DropDownMenu) findViewById(R.id.dropDownMenu);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mLinearLayout = (LinearLayout) findViewById(R.id.toolbar_top);
         mScrollView = (CHZZScrollView) findViewById(R.id.sv_test);
@@ -77,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
         mBadgeRadioButton.showTextBadge("10");
         mNumberPicker = (CHZZPickerView) findViewById(R.id.numberpicker);
         mGrade = (Button) findViewById(R.id.but_grade);
-        mTime= (TextView) findViewById(R.id.tvTime);
+        mTime = (TextView) findViewById(R.id.tvTime);
 
         getData();
         mNumberPicker.setData(mNumData);
@@ -97,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
         niceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this,dataset.get(position),Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, dataset.get(position), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -105,14 +111,14 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
 
             }
         });
-        NiceSpinner niceSpinner1 = (NiceSpinner) findViewById(R.id.nice_spinner1);
+        niceSpinner1 = (NiceSpinner) findViewById(R.id.nice_spinner1);
         final List<String> dataset1 = new LinkedList<>(Arrays.asList("One", "Two", "Three", "Four", "Five"));
-        niceSpinner1.attachDataSource(dataset);
+        niceSpinner1.attachDataSource(dataset, true, this);
         niceSpinner1.setSelectedIndex(3);
         niceSpinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this,dataset.get(position),Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, dataset.get(position), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -120,6 +126,8 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
 
             }
         });
+
+
     }
 
 
@@ -249,10 +257,12 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
 
 
     }
+
     public static String getTime(Date date) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         return format.format(date);
     }
+
     @Override
     public void onBackPressed() {
         //退出activity前关闭菜单
@@ -341,5 +351,18 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
     @Override
     public void onFilterDone(int position, String positionTitle, String urlValue) {
 
+    }
+
+
+    @Override
+    public void setOnCheckedListener(int position, boolean isChecked) {
+        if (isChecked) {
+            mIntegerList.put(position + "", position);
+            Toast.makeText(this, position + "增加", Toast.LENGTH_LONG).show();
+        } else {
+            mIntegerList.remove(position+"");
+            Toast.makeText(this, position + "删除", Toast.LENGTH_LONG).show();
+        }
+        niceSpinner1.setText("已选" + mIntegerList.size() + "");
     }
 }

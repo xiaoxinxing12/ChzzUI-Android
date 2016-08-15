@@ -240,13 +240,17 @@ public class NiceSpinner extends TextView {
         this.onItemSelectedListener = onItemSelectedListener;
     }
 
-    public <T> void attachDataSource(@NonNull List<T> dataset) {
-        adapter = new NiceSpinnerAdapter<>(getContext(), dataset, textColor, backgroundSelector);
+    public <T> void attachDataSource(@NonNull List<T> dataset, boolean isCheckBox, NiceSpinnerBaseAdapter.onCheckBoxChecked onClickCheckBox) {
+        adapter = new NiceSpinnerAdapter<>(getContext(), dataset, textColor, backgroundSelector, isCheckBox, onClickCheckBox);
         setAdapterInternal(adapter);
     }
+    public <T> void attachDataSource(@NonNull List<T> dataset) {
+        adapter = new NiceSpinnerAdapter<>(getContext(), dataset, textColor, backgroundSelector, false, null);
+        setAdapterInternal(adapter);
+    }
+    public void setAdapter(@NonNull ListAdapter adapter, boolean isCheckBox,NiceSpinnerBaseAdapter.onCheckBoxChecked onClickCheckBox) {
 
-    public void setAdapter(@NonNull ListAdapter adapter) {
-        this.adapter = new NiceSpinnerAdapterWrapper(getContext(), adapter, textColor, backgroundSelector);
+        this.adapter = new NiceSpinnerAdapterWrapper(getContext(), adapter, textColor, backgroundSelector, isCheckBox,onClickCheckBox);
         setAdapterInternal(this.adapter);
     }
 

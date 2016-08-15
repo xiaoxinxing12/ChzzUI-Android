@@ -11,8 +11,8 @@ public class NiceSpinnerAdapterWrapper extends NiceSpinnerBaseAdapter {
 
     private final ListAdapter mBaseAdapter;
 
-    public NiceSpinnerAdapterWrapper(Context context, ListAdapter toWrap, int textColor, int backgroundSelector) {
-        super(context, textColor, backgroundSelector);
+    public NiceSpinnerAdapterWrapper(Context context, ListAdapter toWrap, int textColor, int backgroundSelector,boolean isCheckBox, onCheckBoxChecked onClickCheckBox) {
+        super(context, textColor, backgroundSelector,isCheckBox,onClickCheckBox);
         mBaseAdapter = toWrap;
     }
 

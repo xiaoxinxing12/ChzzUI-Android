@@ -12,8 +12,8 @@ public class NiceSpinnerAdapter<T> extends NiceSpinnerBaseAdapter {
 
     private final List<T> mItems;
 
-    public NiceSpinnerAdapter(Context context, List<T> items, int textColor, int backgroundSelector) {
-        super(context, textColor, backgroundSelector);
+    public NiceSpinnerAdapter(Context context, List<T> items, int textColor, int backgroundSelector,boolean isCheckBox, onCheckBoxChecked onClickCheckBox) {
+        super(context, textColor, backgroundSelector,isCheckBox,onClickCheckBox);
         mItems = items;
     }
 
