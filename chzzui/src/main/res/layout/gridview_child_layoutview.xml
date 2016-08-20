@@ -9,11 +9,11 @@
         android:layout_height="wrap_content"
         android:background="@drawable/default_btn_selector"
         android:gravity="center"
-        android:paddingTop="14dp"
-        android:paddingBottom="14dp"
+        android:paddingTop="@dimen/dragView_padding"
+        android:paddingBottom="@dimen/dragView_padding"
         android:text=""
         android:textColor="@color/white"
-        android:textSize="15sp" />
+        android:textSize="@dimen/dragView_textSize" />
 
  
 

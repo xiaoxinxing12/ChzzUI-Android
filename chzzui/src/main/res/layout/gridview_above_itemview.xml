@@ -13,9 +13,9 @@
 
         <ImageView
             android:id="@+id/icon_iv"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="13dp"
+            android:layout_width="@dimen/drag_iv_width_height"
+            android:layout_height="@dimen/drag_iv_width_height"
+            android:layout_marginTop="@dimen/dragView_padding"
             android:layout_centerHorizontal="true"
 
             android:src="@mipmap/ic_launcher" />
@@ -26,12 +26,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/icon_iv"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:paddingBottom="10dp"
+            android:layout_marginTop="@dimen/drag_margin_5"
             android:gravity="center"
+            android:paddingBottom="@dimen/drag_padding_10"
             android:text=""
             android:textColor="@color/color_333333"
-            android:textSize="14sp" />
+            android:textSize="@dimen/dragView_textSize" />
 
 
     </RelativeLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dragView_textSize">18sp</dimen>
+    <dimen name="dragView_padding">24dp</dimen>
+    <dimen name="drag_iv_width_height">70dp</dimen>
+    <dimen name="drag_margin_5">8dp</dimen>
+    <dimen name="drag_padding_10">18dp</dimen>
+    <dimen name="drop_textSize">18dp</dimen>
+    <dimen name="spinner_textSize">18sp</dimen>
+</resources>

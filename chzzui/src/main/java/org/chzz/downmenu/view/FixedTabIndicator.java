@@ -42,7 +42,7 @@ public class FixedTabIndicator extends LinearLayout {
     private int mLineColor = 0xFFeeeeee;
 
 
-    private int mTabTextSize = 13;// 指针文字的大小,sp
+    private int mTabTextSize = getResources().getDimensionPixelSize(R.dimen.drop_textSize);// 指针文字的大小,sp
     private int mTabDefaultColor = 0xFF666666;// 未选中默认颜色
     private int mTabSelectedColor = 0xFF008DF2;// 指针选中颜色
     private int drawableRight = 10;
@@ -239,7 +239,7 @@ public class FixedTabIndicator extends LinearLayout {
         TextView tv = new TextView(context);
         tv.setGravity(Gravity.CENTER);
         tv.setText(title);
-        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, mTabTextSize);
+        tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTabTextSize);
         tv.setTextColor(mTabDefaultColor);
         tv.setSingleLine();
         tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));

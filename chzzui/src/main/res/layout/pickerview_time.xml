@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="15dp"
-        android:textSize="16dp"
+        android:textSize="@dimen/pickerview_topbar_btn_textsize"
         android:text="设置日期"/>
 
     <View
