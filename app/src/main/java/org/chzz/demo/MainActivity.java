@@ -23,8 +23,11 @@ import org.chzz.dialog.SweetAlertDialog;
 import org.chzz.downmenu.DropDownMenu;
 import org.chzz.downmenu.interfaces.OnFilterDoneListener;
 import org.chzz.library.ColorUtil;
+import org.chzz.library.DateUtils;
 import org.chzz.library.DensityUtil;
 import org.chzz.picker.TimePickerView;
+import org.chzz.update.UpdateHelper;
+import org.chzz.update.pojo.UpdateInfo;
 import org.chzz.widget.CHZZDownMenu;
 import org.chzz.widget.CHZZPickerView;
 import org.chzz.widget.CHZZScrollView;
@@ -96,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
         initView();
 
         NiceSpinner niceSpinner = (NiceSpinner) findViewById(R.id.nice_spinner);
-        final List<String> dataset = new LinkedList<>(Arrays.asList("One", "Two", "Three", "Four", "Five"));
+        final List<String> dataset = new LinkedList<>(Arrays.asList("One11111111111111111111111111111111111111111111111111111111", "Two", "Three", "Four", "Five"));
         niceSpinner.attachDataSource(dataset);
         niceSpinner.setSelectedIndex(3);
         niceSpinner.setText("9999");
@@ -112,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
             }
         });
         niceSpinner1 = (NiceSpinner) findViewById(R.id.nice_spinner1);
-        final List<String> dataset1 = new LinkedList<>(Arrays.asList("One", "Two", "Three", "Four", "Five"));
+        final List<String> dataset1 = new LinkedList<>(Arrays.asList("One11111111111111111111111111111111111111111111111111111111", "Two", "Three", "Four", "Five"));
         niceSpinner1.attachDataSource(dataset, true, this);
         niceSpinner1.setSelectedIndex(3);
         niceSpinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -133,6 +136,8 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
 
     private void initView() {
         //init city menu
+
+
         mScrollView.setScrollListener(this);
         mScrollView.setOnTouchListener(this);
         final ListView batchView = new ListView(this);
@@ -234,16 +239,18 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
         mTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pvTime.setStartDateAndTips(DateUtils.stringToDates("2016-09-06"), "不能小于开始日期");
                 pvTime.show();
             }
         });
 
-        pvTime = new TimePickerView(this, TimePickerView.Type.YEAR_MONTH_DAY);
+        pvTime = new TimePickerView(this, TimePickerView.Type.YEAR_MONTH_DAY,
+                DateUtils.stringToDates("2016-09-04"), DateUtils.stringToDates("2016-09-07"), "不能超出轮转期");
         //控制时间范围
 //        Calendar calendar = Calendar.getInstance();
 //        pvTime.setRange(calendar.get(Calendar.YEAR) - 20, calendar.get(Calendar.YEAR));//要在setTime 之前才有效果哦
         pvTime.setTime(new Date());
-        pvTime.setTitle("选择时间");
+        pvTime.setTitle("2016-09-04至2016-09-07");
         pvTime.setCyclic(false);
         pvTime.setCancelable(true);
         //时间选择后回调
@@ -254,6 +261,19 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
                 mTime.setText(getTime(date));
             }
         });
+
+
+        UpdateInfo u = new UpdateInfo();
+        u.setAppName("11");
+        u.setApkUrl("11");
+        u.setUpdateTips("11");
+        u.setChangeLog("11");
+        u.setVersionCode("55");
+        UpdateHelper updateHelper = new UpdateHelper.Builder(this)
+                .isAutoInstall(true) //设置为false需在下载完手动点击安装;默认值为true，下载后自动安装。
+                .build();
+
+        updateHelper.check(u, true);
 
 
     }
@@ -300,6 +320,8 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
             //  viewActionMoreBg.setAlpha(1f - fraction);
             mToolbar.setBackgroundColor(ColorUtil.getNewColorByStartEndColor(this, fraction, R.color.transparent, R.color.colorPrimary));
         }
+
+
     }
 
 
@@ -360,7 +382,7 @@ public class MainActivity extends AppCompatActivity implements CHZZScrollView.Sc
             mIntegerList.put(position + "", position);
             Toast.makeText(this, position + "增加", Toast.LENGTH_LONG).show();
         } else {
-            mIntegerList.remove(position+"");
+            mIntegerList.remove(position + "");
             Toast.makeText(this, position + "删除", Toast.LENGTH_LONG).show();
         }
         niceSpinner1.setText("已选" + mIntegerList.size() + "");

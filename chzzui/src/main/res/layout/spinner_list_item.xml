@@ -15,7 +15,6 @@
         android:paddingBottom="@dimen/one_and_a_half_grid_unit"
         android:paddingLeft="10dp"
         android:paddingTop="@dimen/one_and_a_half_grid_unit"
-        android:singleLine="true"
         android:textSize="@dimen/spinner_textSize"
         android:visibility="gone"
         tools:text="Item"

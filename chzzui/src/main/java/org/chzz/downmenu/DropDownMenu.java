@@ -65,7 +65,7 @@ public class DropDownMenu extends RelativeLayout implements View.OnClickListener
          */
         fixedTabIndicator = new FixedTabIndicator(getContext());
         fixedTabIndicator.setId(R.id.fixedTabIndicator);
-        addView(fixedTabIndicator, -1, UIUtil.dp(getContext(), 50));
+        addView(fixedTabIndicator, -1, UIUtil.dp(getContext(), getResources().getInteger(R.integer.height_40)));
 
         LayoutParams params = new LayoutParams(-1, -1);
         params.addRule(BELOW, R.id.fixedTabIndicator);

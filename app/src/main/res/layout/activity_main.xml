@@ -22,104 +22,109 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <LinearLayout
+        <ScrollView
             android:id="@id/mFilterContentView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-         >
+            android:layout_height="match_parent">
 
-            <org.chzz.widget.NiceSpinner
-                android:background="@drawable/picker_round_selector"
-                android:layout_margin="10dp"
-                android:id="@+id/nice_spinner"
+            <LinearLayout
+
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
 
-                 app:textTint="#000"
-                />
+                <org.chzz.widget.NiceSpinner
+                    android:id="@+id/nice_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/picker_round_selector"
 
-            <org.chzz.widget.NiceSpinner
-                android:id="@+id/nice_spinner1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                app:textTint="#000"
-                />
-            <org.chzz.widget.CHZZDownMenu
-                android:id="@+id/CHZZ_DownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:chzz_dividerColor="@color/gray"
-                app:chzz_maskColor="@color/mask_color"
-                app:chzz_menuBackgroundColor="@color/white"
-                app:chzz_menuSelectedIcon="@mipmap/drop_down_selected_icon"
-                app:chzz_menuTextSize="13sp"
-                app:chzz_menuUnselectedIcon="@mipmap/drop_down_unselected_icon"
-                app:chzz_textSelectedColor="@color/drop_down_selected"
-                app:chzz_textUnselectedColor="@color/drop_down_unselected"
-                app:chzz_underlineColor="@color/gray"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="具体使用方法见Sample"/>
-
-
-            <Button
-                android:id="@+id/but_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="设置颜色"/>
-
-            <Button
-                android:id="@+id/but_start"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="启动住院医"/>
-
-            <org.chzz.badge.CHZZBadgeRadioButton
-                android:id="@+id/brb_main_home"
-                style="@style/WrapWrap"
-                android:background="#00000000"
-                android:button="@null"
-                android:checked="true"
-                android:drawableTop="@drawable/selector_tab_home"
-                android:gravity="center"
-                android:paddingBottom="5dp"
-                android:text="首页"
-                app:badge_dragable="true"
-                app:badge_isResumeTravel="true"
-                app:badge_padding="2dp"/>
-
-            <Button
-                android:id="@+id/but_grade"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:background="@drawable/grade_selector_item">
-
-                <org.chzz.widget.CHZZPickerView
-                    android:id="@+id/numberpicker"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_centerInParent="true"
+                    app:textTint="#000"
                     />
-            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tvTime"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="50dp"
-                android:text="时间"/>
-        </LinearLayout>
+                <org.chzz.widget.NiceSpinner
+                    android:id="@+id/nice_spinner1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
+                    app:textTint="#000"
+                    />
+
+                <org.chzz.widget.CHZZDownMenu
+                    android:id="@+id/CHZZ_DownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:chzz_dividerColor="@color/gray"
+                    app:chzz_maskColor="@color/mask_color"
+                    app:chzz_menuBackgroundColor="@color/white"
+                    app:chzz_menuSelectedIcon="@mipmap/drop_down_selected_icon"
+                    app:chzz_menuTextSize="13sp"
+                    app:chzz_menuUnselectedIcon="@mipmap/drop_down_unselected_icon"
+                    app:chzz_textSelectedColor="@color/drop_down_selected"
+                    app:chzz_textUnselectedColor="@color/drop_down_unselected"
+                    app:chzz_underlineColor="@color/gray"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="具体使用方法见Sample"/>
+
+
+                <Button
+                    android:id="@+id/but_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设置颜色"/>
+
+                <Button
+                    android:id="@+id/but_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="启动住院医"/>
+
+                <org.chzz.badge.CHZZBadgeRadioButton
+                    android:id="@+id/brb_main_home"
+                    style="@style/WrapWrap"
+                    android:background="#00000000"
+                    android:button="@null"
+                    android:checked="true"
+                    android:drawableTop="@drawable/selector_tab_home"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:text="首页"
+                    app:badge_dragable="true"
+                    app:badge_isResumeTravel="true"
+                    app:badge_padding="2dp"/>
+
+                <Button
+                    android:id="@+id/but_grade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/grade_selector_item">
+
+                    <org.chzz.widget.CHZZPickerView
+                        android:id="@+id/numberpicker"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerInParent="true"
+                        />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="50dp"
+                    android:text="时间"/>
+            </LinearLayout>
+        </ScrollView>
     </org.chzz.downmenu.DropDownMenu>
 </LinearLayout>

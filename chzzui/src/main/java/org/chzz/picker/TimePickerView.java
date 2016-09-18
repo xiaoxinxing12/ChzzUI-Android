@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.chzz.R;
 import org.chzz.picker.view.BasePickerView;
@@ -19,7 +20,7 @@ import java.util.Date;
  */
 public class TimePickerView extends BasePickerView implements View.OnClickListener {
     public enum Type {
-        ALL, YEAR_MONTH_DAY, HOURS_MINS, MONTH_DAY_HOUR_MIN , YEAR_MONTH
+        ALL, YEAR_MONTH_DAY, HOURS_MINS, MONTH_DAY_HOUR_MIN, YEAR_MONTH
     }// 四种选择模式，年月日时分，年月日，时分，月日时分
 
     WheelTime wheelTime;
@@ -28,10 +29,28 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
     private static final String TAG_SUBMIT = "submit";
     private static final String TAG_CANCEL = "cancel";
     private OnTimeSelectListener timeSelectListener;
+    private Date mMinDate, mMaxDate, mStartDate, mEndDate, mCurrentDate;
+    private String mTips, mStartTips, mEndTips;
+    private Context mContext;
 
     public TimePickerView(Context context, Type type) {
         super(context);
 
+        init(context, type);
+    }
+
+    public TimePickerView(Context context, Type type, Date minDate, Date maxDate, String tips) {
+        super(context);
+        mMinDate = minDate;
+        mMaxDate = maxDate;
+
+        mTips = tips;
+        init(context, type);
+
+    }
+
+    protected void init(Context context, Type type) {
+        mContext = context;
         LayoutInflater.from(context).inflate(R.layout.pickerview_time, contentContainer);
         // -----确定和取消按钮
         btnSubmit = findViewById(R.id.btnSubmit);
@@ -55,14 +74,14 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         int hours = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
         wheelTime.setPicker(year, month, day, hours, minute);
-
     }
 
     /**
      * 设置可以选择的时间范围
      * 要在setTime之前调用才有效果
+     *
      * @param startYear 开始年份
-     * @param endYear 结束年份
+     * @param endYear   结束年份
      */
     public void setRange(int startYear, int endYear) {
         wheelTime.setStartYear(startYear);
@@ -71,6 +90,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
 
     /**
      * 设置选中时间
+     *
      * @param date 时间
      */
     public void setTime(Date date) {
@@ -109,6 +129,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
 
     /**
      * 设置是否循环滚动
+     *
      * @param cyclic 是否循环
      */
     public void setCyclic(boolean cyclic) {
@@ -125,6 +146,18 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
             if (timeSelectListener != null) {
                 try {
                     Date date = WheelTime.dateFormat.parse(wheelTime.getTime());
+                    if (mMinDate != null && mMaxDate != null && (date.before(mMinDate) || date.after(mMaxDate))) {
+                        Toast.makeText(mContext, mTips, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (mStartDate != null && date.after(mStartDate)) {
+                        Toast.makeText(mContext, mStartTips, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (mEndDate != null && date.before(mEndDate)) {
+                        Toast.makeText(mContext, mEndTips, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     timeSelectListener.onTimeSelect(date);
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -143,7 +176,17 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         this.timeSelectListener = timeSelectListener;
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         tvTitle.setText(title);
+    }
+
+    public void setStartDateAndTips(Date startDate, String startTips) {
+        mStartDate = startDate;
+        mStartTips = startTips;
+    }
+
+    public void setEndDateAndTips(Date endDate, String endTips) {
+        mEndDate = endDate;
+        mEndTips = endTips;
     }
 }

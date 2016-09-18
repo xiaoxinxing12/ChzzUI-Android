@@ -1,6 +1,6 @@
 package org.chzz.update;
 
-import android.app.AlertDialog;
+
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -17,7 +17,8 @@ import android.os.Message;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
-
+import android.support.v7.app.AlertDialog;
+import org.chzz.R;
 import org.chzz.update.listener.OnUpdateListener;
 import org.chzz.update.pojo.UpdateInfo;
 import org.chzz.update.utils.HttpRequest;
@@ -187,9 +188,10 @@ public class UpdateHelper {
      * @param updateInfo
      */
     private void showUpdateUI(final UpdateInfo updateInfo) {
-        AlertDialog.Builder upDialogBuilder = new AlertDialog.Builder(mContext);
+        AlertDialog.Builder upDialogBuilder = new AlertDialog.Builder(mContext, R.style.DialogTheme);
         upDialogBuilder.setTitle(updateInfo.getUpdateTips());
         upDialogBuilder.setMessage(updateInfo.getChangeLog());
+
         upDialogBuilder.setNegativeButton("下次再说",
                 new DialogInterface.OnClickListener() {
                     @Override
